@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FasTrend</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Barlow Condensed', sans-serif;
+      overflow-x: hidden;
+    }
+
+    
+    #home {
+      background-color: #004d4d;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home nav {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      padding: 28px 0;
+    }
+
+    #home nav a {
+      color: #c8e6e6;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      transition: color 0.25s ease;
+    }
+
+    #home nav a:hover {
+      color: #ffffff;
+    }
+
+    .brand-text {
+      position: absolute;
+      bottom: -0.12em;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: clamp(80px, 14.5vw, 220px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #ffffff;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
+    
+    #why {
+      background-color: #f5f5f3;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .why-container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 5vw;
+    }
+
+    .why-left {
+      flex: 0 0 45%;
+      z-index: 2;
+    }
+
+    .why-left h2 {
+      font-size: clamp(22px, 2.8vw, 44px);
+      font-weight: 900;
+      color: #004d4d;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .why-right {
+      flex: 0 0 55%;
+      position: relative;
+      height: 100vh;
+    }
+
+    .person-placeholder {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 70%;
+      height: 85%;
+      background: linear-gradient(160deg, #ddd 0%, #bbb 100%);
+      border-radius: 20px 20px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 15px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .person-img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 72%;
+      height: 88%;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+
+    .tag {
+      position: absolute;
+      background-color: #004d4d;
+      color: #ffffff;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: clamp(13px, 1.6vw, 24px);
+      padding: 0.45em 1.1em;
+      border-radius: 50px;
+      white-space: nowrap;
+      z-index: 10;
+      box-shadow: 2px 4px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    .tag-1 { top: 6%;  right: 18%; transform: rotate(8deg); }
+    .tag-2 { top: 28%; right: 28%; transform: rotate(-12deg); font-size: clamp(15px, 1.9vw, 28px); }
+    .tag-3 { top: 32%; right: 6%;  transform: rotate(6deg); }
+    .tag-4 { top: 52%; right: 22%; transform: rotate(-8deg); }
+    .tag-5 { top: 56%; right: 4%;  transform: rotate(12deg); }
+
+    #how1 {
+      background-color: #ffffff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 6vh 5vw;
+      overflow: hidden;
+    }
+
+    #how1 h2 {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: clamp(36px, 6vw, 90px);
+      color: #111111;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.4em;
+    }
+
+    #how1 p {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: clamp(13px, 1.3vw, 20px);
+      color: #333333;
+      letter-spacing: 0.01em;
+    }
+
+    #how2 {
+      background: linear-gradient(135deg, #b2ede8 0%, #d6f5f0 40%, #e8faf7 70%, #c8f0ea 100%);
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      padding: 7vh 5vw;
+    }
+
+    .how2-text {
+      z-index: 2;
+      position: relative;
+    }
+
+    .how2-dots {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .how2-dots span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #004d4d;
+      display: inline-block;
+    }
+
+    #how2 h2 {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: clamp(40px, 7vw, 110px);
+      color: #111111;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 0.3em;
+    }
+
+    #how2 p {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: clamp(13px, 1.3vw, 20px);
+      color: #222222;
+    }
+
+    /* Box image area */
+    .box-img-wrap {
+      position: absolute;
+      bottom: 0;
+      right: 4vw;
+      width: 55%;
+      height: 75%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .box-placeholder {
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(145deg, #c8a96e 0%, #a07840 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      font-family: 'Noto Sans KR', sans-serif;
+      box-shadow: 8px 16px 48px rgba(0,0,0,0.18);
+    }
+
+    .box-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="home">
+    <nav>
+      <a href="#why">why?</a>
+      <a href="#how1">how?</a>
+      <a href="#how2">how?</a>
+    </nav>
+    <h1 class="brand-text">FasTrend</h1>
+  </section>
+
+  <section id="why">
+    <div class="why-container">
+      <div class="why-left">
+        <h2>
+          너무 빠른 유행,<br/>
+          그러나 따라잡고 싶을 땐?<br/>
+          fastrend가 도와드립니다.
+        </h2>
+      </div>
+    
+    </div>
+  </section>
+
+  
+  <section id="how1">
+    <h2>다음 유행을 미리 알아보세요</h2>
+    <p>ai를 기반으로 다음 유행을 예측해서 알려드려요
+    </p>
+  </section>
+
+  
+  <section id="how2">
+    <div class="how2-text">
+      <div class="how2-dots">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <h2>누구보다 빠르게 </h2>
+      <p>에상 유행음식/아이템을 가장 빠르게 받아보세요 </p>
+    </div>
+
+    <div class="box-img-wrap">
+      
+      <div class="box-placeholder">박스이미지 </div>
+    </div>
+  </section>
+
+</body>
+</html>
